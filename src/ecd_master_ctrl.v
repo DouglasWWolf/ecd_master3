@@ -209,8 +209,10 @@ module ecd_master_ctrl
 
     // We drive AXIS_TX_TDATA directly from M_AXI_RDATA, but we need to put the bytes
     // back in their original order (The PCI bridge delivers them to us in little-endian)
+    wire[511:0] byte_swapped;
     genvar x;
-    for (x=0; x<64; x=x+1) assign AXIS_TX_TDATA[x*8+7:x*8] = M_AXI_RDATA[(63-x)*8+7:(63-x)*8];
+    for (x=0; x<64; x=x+1) assign byte_swapped[x*8+7:x*8] = M_AXI_RDATA[(63-x)*8+7:(63-x)*8];
+    assign AXIS_TX_TDATA[511:0] = byte_swapped[511:0];
    
     //==========================================================================
     // World's simplest state machine for handling write requests

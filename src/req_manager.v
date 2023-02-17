@@ -12,14 +12,17 @@
 // 06-Oct-22  DWW  1000  Initial creation
 //===================================================================================================
 
-module req_manager
+module req_manager #
+(
+    parameter REQ_ID_WIDTH = 32
+)
 (
     input clk, resetn, 
 
-    //==========================  AXI Stream interface for request input  ===========================
-    input[31:0]         AXIS_RQ_TDATA,
-    input               AXIS_RQ_TVALID,
-    output              AXIS_RQ_TREADY,
+    //============================  Interface for fetching row-requests  ============================
+    input[REQ_ID_WIDTH-1:0] REQ_ID_IN,
+    input                   REQ_ID_VALID,
+    output                  READY_FOR_REQ,
     //===============================================================================================
 
     //===========================  AXI Stream interface for data input #0 ===========================
@@ -52,7 +55,7 @@ module req_manager
 localparam RX_BEATS_PER_PACKET = 32;
 
 // Define the AXIS handshake for each stream
-wire RQ_HANDSHAKE = AXIS_RQ_TVALID & AXIS_RQ_TREADY;
+wire RQ_HANDSHAKE = REQ_ID_VALID & READY_FOR_REQ;
 
 //===================================================================================================
 // State machine that allows incoming data-requests to flow in
@@ -62,47 +65,47 @@ wire RQ_HANDSHAKE = AXIS_RQ_TVALID & AXIS_RQ_TREADY;
 reg get_new_rq;
 
 // The most recently arrived data-request
-reg[31:0] rq_data;
+reg[REQ_ID_WIDTH-1:0] rq_data;
 
 // This is '1' if rq_data holds a valid data-request
 reg rq_data_valid;
 
-// AXIS_RQ_TREADY stays high as long as this is high
-reg axis_rq_tready;      
+// READY_FOR_REQ stays high as long as this is high
+reg ready_for_req;      
 
-// AXIS_RQ_TREADY goes high as soon as get_new_rq goes high
-assign AXIS_RQ_TREADY = (resetn == 1) && (get_new_rq || axis_rq_tready);
+// READY_FOR_REQ goes high as soon as get_new_rq goes high
+assign READY_FOR_REQ = (resetn == 1) && (get_new_rq || ready_for_req);
 
 //===================================================================================================
 always @(posedge clk) begin
    
     // If we're in reset, by definition rq_data isn't valid.
-    // When we come out of reset, we want to instantly drive AXIS_RQ_TREADY 
+    // When we come out of reset, we want to instantly drive READY_FOR_REQ 
     // high so that a data-request flows in as soon as one is available
     if (resetn == 0) begin
-        rq_data_valid  <= 0;
-        axis_rq_tready <= 1;
+        rq_data_valid <= 0;
+        ready_for_req <= 1;
     end else begin
 
-        // If the other state machine asked for a new data-request, AXIS_RQ_TREADY is 
+        // If the other state machine asked for a new data-request, READY_FOR_REQ is 
         // already high.   Here we keep track of the fact that we want it to stay high
         // and we declare that the rq_data register no longer holds a valid data-request.
         if (get_new_rq) begin
-            axis_rq_tready <= 1;
-            rq_data_valid  <= 0;
+            ready_for_req <= 1;
+            rq_data_valid <= 0;
         end
 
         // If a new data-request has arrived...
         if (RQ_HANDSHAKE) begin
             
-            // Lower the AXIS_RQ_TREADY signal
-            axis_rq_tready <= 0;
+            // Lower the READY_FOR_REQ signal
+            ready_for_req <= 0;
             
             // Store the data-request that just arrived
-            rq_data <= AXIS_RQ_TDATA;
+            rq_data <= REQ_ID_IN;
 
             // And indicate that rq_data holds a valid data-request
-            rq_data_valid  <= 1;
+            rq_data_valid <= 1;
         end
     end
 
@@ -118,11 +121,11 @@ end
 //
 // The sources of the received row data alternates between AXIS_RX0 and AXIS_RX1
 //===================================================================================================
-reg        input_sel;
-reg[2:0]   fsm_state;
-reg[31:0]  req_id;
-reg[7:0]   beat_countdown;
-reg[1:0]   AXIS_RXn_TREADY;
+reg                    input_sel;
+reg[2:0]               fsm_state;
+reg[REQ_ID_WIDTH-1:0]  req_id;
+reg[7:0]               beat_countdown;
+reg[1:0]               AXIS_RXn_TREADY;
 
 // The TREADY lines of the two RX inputs are driven by AXIS_RXn_TREADY
 assign AXIS_RX0_TREADY = AXIS_RXn_TREADY[0];
