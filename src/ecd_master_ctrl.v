@@ -63,12 +63,18 @@ module ecd_master_ctrl
 
 
 
-    //===============  AXI Stream interface for outputting data ================
-    output[`AXIS_DATA_WIDTH-1:0] AXIS_TX_TDATA,
-    output                       AXIS_TX_TVALID,
-    input                        AXIS_TX_TREADY,
+    //==========  AXI Stream interface for outputting channel 0 data ===========
+    output[`AXIS_DATA_WIDTH-1:0] AXIS_TX0_TDATA,
+    output                       AXIS_TX0_TVALID,
+    input                        AXIS_TX0_TREADY,
     //==========================================================================
 
+
+    //==========  AXI Stream interface for outputting channel 0 data ===========
+    output[`AXIS_DATA_WIDTH-1:0] AXIS_TX1_TDATA,
+    output                       AXIS_TX1_TVALID,
+    input                        AXIS_TX1_TREADY,
+    //==========================================================================
 
 
 
@@ -130,6 +136,10 @@ module ecd_master_ctrl
     localparam M_AXI_DATA_WIDTH = `M_AXI_DATA_WIDTH;
     localparam M_AXI_DATA_BYTES = M_AXI_DATA_WIDTH / 8;
 
+
+    // We have two output channels
+    localparam CHANNEL_COUNT = 2;
+
     //==========================================================================
     // We'll communicate with the AXI4-Lite Slave core with these signals.
     //==========================================================================
@@ -147,6 +157,14 @@ module ecd_master_ctrl
     reg[1:0]    ashi_rresp;     // Output: Read-response (OKAY, DECERR, SLVERR);
     wire        ashi_ridle;     // Output: 1 = Read state machine is idle
     //==========================================================================
+
+    // This register determine whether we are outputting to AXIS_TX0 or AXIS_TX1
+    reg channel_select;
+
+    // Create an array of TREADY signals from the output channels
+    wire AXIS_TXn_TREADY[0:CHANNEL_COUNT-1];
+    assign AXIS_TXn_TREADY[0] = AXIS_TX0_TREADY;
+    assign AXIS_TXn_TREADY[1] = AXIS_TX1_TREADY;
 
     // The state of our two state machines
     reg[2:0] ctrl_read_state, ctrl_write_state;
@@ -201,18 +219,20 @@ module ecd_master_ctrl
     assign M_AXI_ARBURST = 1;
 
     // The AXI-Stream output is driven directly from the AXI Master interface    
-    assign AXIS_TX_TVALID = M_AXI_RVALID && ~fsm_idle;
-    
+    assign AXIS_TX0_TVALID = (channel_select == 0) & M_AXI_RVALID & ~fsm_idle;
+    assign AXIS_TX1_TVALID = (channel_select == 1) & M_AXI_RVALID & ~fsm_idle;
+
     // We're ready to receive data from the PCI bus if the FIFO is ready for data or
     // if we're idle.   If we're idle, the data is just thrown away
-    assign M_AXI_RREADY = AXIS_TX_TREADY | fsm_idle;
+    assign M_AXI_RREADY = AXIS_TXn_TREADY[channel_select] | fsm_idle;
 
-    // We drive AXIS_TX_TDATA directly from M_AXI_RDATA, but we need to put the bytes
+    // We drive AXIS_TX0_TDATA directly from M_AXI_RDATA, but we need to put the bytes
     // back in their original order (The PCI bridge delivers them to us in little-endian)
     wire[511:0] byte_swapped;
     genvar x;
     for (x=0; x<64; x=x+1) assign byte_swapped[x*8+7:x*8] = M_AXI_RDATA[(63-x)*8+7:(63-x)*8];
-    assign AXIS_TX_TDATA[511:0] = byte_swapped[511:0];
+    assign AXIS_TX0_TDATA = byte_swapped;
+    assign AXIS_TX1_TDATA = byte_swapped;
    
     //==========================================================================
     // World's simplest state machine for handling write requests
@@ -357,6 +377,21 @@ module ecd_master_ctrl
 
 
     //==========================================================================
+    // This state machine is responsible for toggling "channel_select" any time
+    // a data-cycle handshake occurs
+    //==========================================================================
+    always @(posedge clk) begin
+        if (resetn == 0) begin
+            channel_select <= 0;
+        end else if (AXIS_TXn_TREADY[channel_select] & M_AXI_RVALID)
+            channel_select <= ~channel_select;
+    end
+    //==========================================================================
+
+
+
+
+    //==========================================================================
     // This state machine is responsible for raising an interrupt when the
     // last block in a buffer has been received.
     //==========================================================================
@@ -415,7 +450,7 @@ module ecd_master_ctrl
         0:  if (start_fetching_data) pcsm <= 1;
 
         // Here we're waiting for the output FIFO to become full
-        1:  if (~AXIS_TX_TREADY) begin
+        1:  if (~AXIS_TX0_TREADY) begin
                 PRELOAD_COMPLETE <= 1;
                 pcsm             <= 0;
             end
