@@ -28,12 +28,14 @@ module axi_proxy
     //===========  Channel 0 AXI Stream interface for the AXI request ==========
     output[511:0]  AXIS_OUT0_TDATA,
     output reg     AXIS_OUT0_TVALID,
+    output         AXIS_OUT0_TLAST,
     input          AXIS_OUT0_TREADY,
     //==========================================================================
 
     //===========  Channel 1 AXI Stream interface for the AXI request ==========
     output[511:0]  AXIS_OUT1_TDATA,
     output reg     AXIS_OUT1_TVALID,
+    output         AXIS_OUT1_TLAST,
     input          AXIS_OUT1_TREADY,
     //==========================================================================
 
@@ -103,7 +105,13 @@ module axi_proxy
     wire        ashi_ridle;     // Output: 1 = Read state machine is idle
     //==========================================================================
 
-
+    //===============================================================================================
+    // Outgoing AXI stream packets are always exactly 1 data-cycle long
+    //===============================================================================================
+    assign AXIS_OUT0_TLAST = 1;
+    assign AXIS_OUT1_TLAST = 1;
+    //===============================================================================================
+    
     //===============================================================================================
     // Field definitions for the TDATA lines
     //===============================================================================================
