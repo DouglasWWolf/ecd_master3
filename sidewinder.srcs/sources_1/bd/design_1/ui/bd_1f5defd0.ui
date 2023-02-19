@@ -61,82 +61,82 @@ pagesize -pg 1 -db -bbox -sgen -140 0 1500 860
    "No Loops_Layers":"/xdma_0_axi_aclk:true|/xdma_clock_IBUF_OUT:true|/ddr4_reset_peripheral_aresetn:true|/util_ds_buf_0_IBUF_OUT:true|/system_reset_100mhz_peripheral_aresetn:true|/ddr4_ram_c0_ddr4_ui_clk:true|/ddr4_ram_c0_ddr4_ui_clk_sync_rst:true|/xdma_0_axi_aresetn:true|/xdma_clock_IBUF_DS_ODIV2:true|/ext_reset_in_0_1:true|/system_reset_100mhz_peripheral_reset:true|/system_reset_100mhz_interconnect_aresetn:true|/S01_ARESETN_1:true|",
    "No Loops_Layout":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port clk_100mhz -pg 1 -lvl 0 -x 0 -y 920 -defaultsOSRD
-preplace port pci_refclk -pg 1 -lvl 0 -x 0 -y 190 -defaultsOSRD
-preplace port pcie_mgt -pg 1 -lvl 0 -x 0 -y 170 -defaultsOSRD -left
-preplace port qsfp0_clk -pg 1 -lvl 8 -x 2990 -y 330 -defaultsOSRD -right
-preplace port qsfp1_clk -pg 1 -lvl 8 -x 2990 -y 270 -defaultsOSRD -right
-preplace port qsfp0_gt -pg 1 -lvl 8 -x 2990 -y 290 -defaultsOSRD
-preplace port qsfp1_gt -pg 1 -lvl 8 -x 2990 -y 310 -defaultsOSRD
-preplace port port-id_pb_rst_n -pg 1 -lvl 0 -x 0 -y 1100 -defaultsOSRD
-preplace port port-id_led_pci_link_up -pg 1 -lvl 8 -x 2990 -y 210 -defaultsOSRD
-preplace port port-id_qsfp0_up -pg 1 -lvl 8 -x 2990 -y 350 -defaultsOSRD
-preplace port port-id_qsfp1_up -pg 1 -lvl 8 -x 2990 -y 370 -defaultsOSRD
-preplace inst system_reset_100mhz -pg 1 -lvl 1 -x 230 -y 1020 -swap {5 9 2 3 4 6 7 0 8 1} -defaultsOSRD -pinDir slowest_sync_clk right -pinY slowest_sync_clk 20R -pinDir ext_reset_in left -pinY ext_reset_in 80L -pinDir aux_reset_in left -pinY aux_reset_in 20L -pinDir mb_debug_sys_rst left -pinY mb_debug_sys_rst 40L -pinDir dcm_locked left -pinY dcm_locked 60L -pinDir mb_reset right -pinY mb_reset 40R -pinBusDir bus_struct_reset right -pinBusY bus_struct_reset 60R -pinBusDir peripheral_reset right -pinBusY peripheral_reset 0R -pinBusDir interconnect_aresetn right -pinBusY interconnect_aresetn 80R -pinBusDir peripheral_aresetn left -pinBusY peripheral_aresetn 0L
-preplace inst clock_buffer_100mhz -pg 1 -lvl 1 -x 230 -y 920 -defaultsOSRD -pinDir CLK_IN_D left -pinY CLK_IN_D 0L -pinBusDir IBUF_OUT right -pinBusY IBUF_OUT 0R
-preplace inst pcie_axi_bridge -pg 1 -lvl 1 -x 230 -y 170 -swap {53 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 0 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 20 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 113 112 118 115 114 117 116} -defaultsOSRD -pinDir S_BRIDGE_CTRL_AXI right -pinY S_BRIDGE_CTRL_AXI 80R -pinDir S_AXI_B right -pinY S_AXI_B 0R -pinDir pcie_mgt left -pinY pcie_mgt 0L -pinDir M_AXI_B right -pinY M_AXI_B 60R -pinDir S_INT_MGR_AXI right -pinY S_INT_MGR_AXI 460R -pinDir pci_refclk left -pinY pci_refclk 20L -pinDir axi_aresetn right -pinY axi_aresetn 580R -pinDir axi_aclk right -pinY axi_aclk 480R -pinDir led_pci_link_up right -pinY led_pci_link_up 660R -pinDir sys_rst_n left -pinY sys_rst_n 660L -pinDir IRQ_EOB_IN right -pinY IRQ_EOB_IN 600R -pinDir IRQ_UNDERFLOW_IN right -pinY IRQ_UNDERFLOW_IN 640R -pinDir IRQ_JOBCOMPLETE_IN right -pinY IRQ_JOBCOMPLETE_IN 620R
-preplace inst qsfp_data -pg 1 -lvl 7 -x 2800 -y 270 -swap {44 1 2 0 4 5 49 7 8 9 10 11 12 13 14 54 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 58 36 37 38 3 40 41 42 43 39 45 46 47 48 6 50 51 52 53 35 55 56 57 15 59 60 61 67 63 64 65 62 66} -defaultsOSRD -pinDir qsfp0_clk right -pinY qsfp0_clk 60R -pinDir qsfp1_clk right -pinY qsfp1_clk 0R -pinDir ROW_REQ_STREAM left -pinY ROW_REQ_STREAM 370L -pinDir QSFP_TX0_STREAM left -pinY QSFP_TX0_STREAM 100L -pinDir AXI_QSFP_STATUS left -pinY AXI_QSFP_STATUS 430L -pinDir EVENT_STREAM left -pinY EVENT_STREAM 450L -pinDir qsfp0_gt right -pinY qsfp0_gt 20R -pinDir qsfp1_gt right -pinY qsfp1_gt 40R -pinDir QSPF_TX1_STREAM left -pinY QSPF_TX1_STREAM 0L -pinDir SLOT_2_AXIS left -pinY SLOT_2_AXIS 220L -pinDir SLOT_3_AXIS left -pinY SLOT_3_AXIS 200L -pinDir init_clk left -pinY init_clk 650L -pinDir reset_in left -pinY reset_in 490L -pinDir qsfp0_channel_up right -pinY qsfp0_channel_up 80R -pinDir qsfp1_channel_up right -pinY qsfp1_channel_up 100R -pinDir data_clock left -pinY data_clock 470L -pinDir data_aresetn left -pinY data_aresetn 510L
-preplace inst restart_manager -pg 1 -lvl 3 -x 1050 -y 430 -defaultsOSRD -pinDir S_AXI left -pinY S_AXI 0L -pinDir clk left -pinY clk 20L -pinDir resetn left -pinY resetn 40L -pinDir restartn right -pinY restartn 0R
-preplace inst ch0_request_handler -pg 1 -lvl 4 -x 1510 -y 210 -swap {0 1 2 3 4 5 6 7 8 10 9 13 11 12} -defaultsOSRD -pinDir AXIS_TX right -pinY AXIS_TX 0R -pinDir S_AXIS left -pinY S_AXIS 0L -pinDir clk left -pinY clk 40L -pinDir resetn left -pinY resetn 20L -pinDir READY_FOR_REQ right -pinY READY_FOR_REQ 60R -pinDir REQ_ID_VALID right -pinY REQ_ID_VALID 20R -pinBusDir REQ_ID_IN right -pinBusY REQ_ID_IN 40R
-preplace inst system_interconnect -pg 1 -lvl 2 -x 610 -y 230 -swap {0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 158 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 78 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 204 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 98 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 138 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224} -defaultsOSRD -pinDir S00_AXI left -pinY S00_AXI 0L -pinDir M00_AXI left -pinY M00_AXI 20L -pinDir M01_AXI left -pinY M01_AXI 400L -pinDir M02_AXI right -pinY M02_AXI 400R -pinDir M03_AXI right -pinY M03_AXI 0R -pinDir M04_AXI right -pinY M04_AXI 100R -pinDir M05_AXI right -pinY M05_AXI 420R -pinDir M06_AXI right -pinY M06_AXI 20R -pinDir M07_AXI right -pinY M07_AXI 200R -pinDir aclk left -pinY aclk 420L
-preplace inst axi_revision -pg 1 -lvl 3 -x 1050 -y 630 -defaultsOSRD -pinDir S_AXI left -pinY S_AXI 0L -pinDir AXI_ACLK left -pinY AXI_ACLK 20L -pinDir AXI_ARESETN left -pinY AXI_ARESETN 40L
-preplace inst event_broker -pg 1 -lvl 4 -x 1510 -y 380 -swap {4 1 2 3 0 5 6 7 8 9 11 10} -defaultsOSRD -pinDir AXIS_IN right -pinY AXIS_IN 60R -pinDir AXIS_OUT right -pinY AXIS_OUT 40R -pinDir clk left -pinY clk 0L -pinDir resetn left -pinY resetn 20L -pinDir event_underflow left -pinY event_underflow 60L -pinDir event_jobcomplete left -pinY event_jobcomplete 40L
-preplace inst request_presenter -pg 1 -lvl 5 -x 1990 -y 270 -swap {0 1 2 3 8 7 4 5 6} -defaultsOSRD -pinDir FIFO right -pinY FIFO 80R -pinDir clk left -pinY clk 80L -pinDir ch0_ready left -pinY ch0_ready 60L -pinDir ch1_ready left -pinY ch1_ready 0L -pinDir req_id_valid left -pinY req_id_valid 20L -pinBusDir req_id left -pinBusY req_id 40L
-preplace inst ecd_master_ctrl -pg 1 -lvl 3 -x 1050 -y 80 -swap {4 1 2 3 0 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 68 66 67 65} -defaultsOSRD -pinDir AXIS_TX0 right -pinY AXIS_TX0 130R -pinDir AXIS_TX1 right -pinY AXIS_TX1 0R -pinDir M_AXI left -pinY M_AXI 90L -pinDir S_AXI left -pinY S_AXI 150L -pinDir clk left -pinY clk 170L -pinDir resetn right -pinY resetn 190R -pinDir IRQ_EOB left -pinY IRQ_EOB 190L -pinDir PRELOAD_COMPLETE right -pinY PRELOAD_COMPLETE 170R -pinDir DRAINING right -pinY DRAINING 150R
-preplace inst ch1_request_handler -pg 1 -lvl 4 -x 1510 -y 60 -defaultsOSRD -pinDir AXIS_TX right -pinY AXIS_TX 0R -pinDir S_AXIS left -pinY S_AXIS 20L -pinDir clk left -pinY clk 40L -pinDir resetn left -pinY resetn 60L -pinDir READY_FOR_REQ right -pinY READY_FOR_REQ 20R -pinDir REQ_ID_VALID right -pinY REQ_ID_VALID 40R -pinBusDir REQ_ID_IN right -pinBusY REQ_ID_IN 60R
-preplace inst ch0_axis_switch -pg 1 -lvl 6 -x 2390 -y 370 -defaultsOSRD -pinDir AXIS_IN1 left -pinY AXIS_IN1 0L -pinDir AXIS_IN2 left -pinY AXIS_IN2 20L -pinDir AXIS_OUT right -pinY AXIS_OUT 0R -pinDir clk left -pinY clk 40L
-preplace inst ch1_axis_switch -pg 1 -lvl 6 -x 2390 -y 60 -defaultsOSRD -pinDir AXIS_IN1 left -pinY AXIS_IN1 0L -pinDir AXIS_IN2 left -pinY AXIS_IN2 190L -pinDir AXIS_OUT right -pinY AXIS_OUT 210R -pinDir clk left -pinY clk 210L
-preplace inst axi4lite_proxy -pg 1 -lvl 5 -x 1990 -y 450 -swap {0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 35 36 34} -defaultsOSRD -pinDir AXIS_IN left -pinY AXIS_IN 0L -pinDir AXIS_OUT0 right -pinY AXIS_OUT0 0R -pinDir AXIS_OUT1 right -pinY AXIS_OUT1 20R -pinDir S_AXI left -pinY S_AXI 50L -pinDir clk left -pinY clk 90L -pinDir resetn left -pinY resetn 110L -pinDir preload_complete left -pinY preload_complete 70L
-preplace netloc REQ_ID_IN_1 1 4 1 1790 120n
-preplace netloc REQ_ID_VALID_1 1 4 1 1810 100n
-preplace netloc ch1_request_manager_READY_FOR_REQ 1 4 1 1830J 80n
-preplace netloc ecd_master_ctrl_IRQ_PPB0 1 1 2 NJ 770 810J
-preplace netloc ecd_master_ctrl_PRELOAD_COMPLETE 1 3 2 1330 320 1750J
-preplace netloc event_broker_event_jobcomplete 1 1 3 NJ 790 850J 530 1250J
-preplace netloc event_broker_event_underflow 1 1 3 NJ 810 870J 550 1270J
-preplace netloc ext_reset_in_0_1 1 0 1 NJ 1100
-preplace netloc ila_250mhz 1 1 6 470 730 770 370 1350 520 1730 640 2150 600 2590J
-preplace netloc pcie_axi_bridge_led_pci_link_up 1 1 7 NJ 830 890J 570 1210J 580 1670J 660 NJ 660 2570J 210 NJ
-preplace netloc qsfp_data_channel_up_0 1 7 1 NJ 350
-preplace netloc qsfp_data_channel_up_1 1 7 1 NJ 370
-preplace netloc request_manager_READY_FOR_REQ 1 4 1 1770J 270n
-preplace netloc reset_in_1 1 1 6 450J 710 790J 350 1290J 540 1710J 620 NJ 620 2550J
-preplace netloc restartn 1 3 2 1230 560 NJ
-preplace netloc system_reset_100mhz_peripheral_aresetn 1 0 1 20 830n
-preplace netloc util_ds_buf_0_IBUF_OUT 1 1 6 430J 920 NJ 920 NJ 920 NJ 920 NJ 920 N
-preplace netloc xdma_0_axi_aresetn 1 1 6 NJ 750 830 730 NJ 730 1670J 680 2170J 740 2530J
-preplace netloc CLK_IN_D_0_1 1 0 1 NJ 920
-preplace netloc GT_DIFF_REFCLK1_0_1 1 7 1 NJ 330
-preplace netloc GT_DIFF_REFCLK1_0_3 1 7 1 NJ 270
-preplace netloc axi4lite_proxy_AXIS_OUT1 1 5 2 2190 470 N
-preplace netloc axi_proxy_AXIS 1 5 2 2210 490 N
-preplace netloc axis_switch_0_AXIS_OUT 1 6 1 N 370
-preplace netloc ch1_axis_switch_AXIS_OUT 1 6 1 N 270
-preplace netloc ch1_request_manager_AXIS_TX 1 4 2 NJ 60 NJ
-preplace netloc ecd_master_ctrl_AXIS_TX0 1 3 1 N 210
-preplace netloc ecd_master_ctrl_AXIS_TX1 1 3 1 N 80
-preplace netloc ecd_master_ctrl_M_AXI 1 1 2 NJ 170 NJ
-preplace netloc event_broker_0_AXIS_OUT 1 4 1 1710 420n
-preplace netloc pci_refclk_1 1 0 1 NJ 190
-preplace netloc pcie_axi_bridge_M_AXI_B 1 1 1 N 230
-preplace netloc pcie_axi_bridge_pcie_mgt 1 0 1 NJ 170
-preplace netloc qsfp_data_EVENT_STREAM 1 4 3 1690J 720 NJ 720 NJ
-preplace netloc qsfp_data_ROW_REQ_STREAM 1 5 2 2170 640 NJ
-preplace netloc qsfp_data_gt_serial_port_0 1 7 1 NJ 290
-preplace netloc qsfp_data_gt_serial_port_1 1 7 1 NJ 310
-preplace netloc request_manager_AXIS_TX 1 4 2 NJ 210 2210
-preplace netloc system_interconnect_M00_AXI 1 1 1 N 250
-preplace netloc system_interconnect_M01_AXI 1 1 1 N 630
-preplace netloc system_interconnect_M02_AXI 1 2 1 N 630
-preplace netloc system_interconnect_M03_AXI 1 2 1 N 230
-preplace netloc system_interconnect_M04_AXI 1 2 3 NJ 330 1310J 500 NJ
-preplace netloc system_interconnect_M05_AXI 1 2 5 750 750 NJ 750 1770J 700 NJ 700 NJ
-preplace netloc system_interconnect_M07_AXI 1 2 1 N 430
-levelinfo -pg 1 0 230 610 1050 1510 1990 2390 2800 2990
-pagesize -pg 1 -db -bbox -sgen -140 0 3150 1160
+preplace port clk_100mhz -pg 1 -lvl 0 -x 0 -y 1050 -defaultsOSRD
+preplace port pci_refclk -pg 1 -lvl 0 -x 0 -y 220 -defaultsOSRD
+preplace port pcie_mgt -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD -left
+preplace port qsfp0_clk -pg 1 -lvl 8 -x 2970 -y 140 -defaultsOSRD -right
+preplace port qsfp1_clk -pg 1 -lvl 8 -x 2970 -y 80 -defaultsOSRD -right
+preplace port qsfp0_gt -pg 1 -lvl 8 -x 2970 -y 100 -defaultsOSRD
+preplace port qsfp1_gt -pg 1 -lvl 8 -x 2970 -y 120 -defaultsOSRD
+preplace port port-id_pb_rst_n -pg 1 -lvl 0 -x 0 -y 1230 -defaultsOSRD
+preplace port port-id_led_pci_link_up -pg 1 -lvl 8 -x 2970 -y 20 -defaultsOSRD
+preplace port port-id_qsfp0_up -pg 1 -lvl 8 -x 2970 -y 160 -defaultsOSRD
+preplace port port-id_qsfp1_up -pg 1 -lvl 8 -x 2970 -y 180 -defaultsOSRD
+preplace inst system_reset_100mhz -pg 1 -lvl 1 -x 230 -y 1150 -swap {5 9 2 3 4 6 7 0 8 1} -defaultsOSRD -pinDir slowest_sync_clk right -pinY slowest_sync_clk 20R -pinDir ext_reset_in left -pinY ext_reset_in 80L -pinDir aux_reset_in left -pinY aux_reset_in 20L -pinDir mb_debug_sys_rst left -pinY mb_debug_sys_rst 40L -pinDir dcm_locked left -pinY dcm_locked 60L -pinDir mb_reset right -pinY mb_reset 40R -pinBusDir bus_struct_reset right -pinBusY bus_struct_reset 60R -pinBusDir peripheral_reset right -pinBusY peripheral_reset 0R -pinBusDir interconnect_aresetn right -pinBusY interconnect_aresetn 80R -pinBusDir peripheral_aresetn left -pinBusY peripheral_aresetn 0L
+preplace inst clock_buffer_100mhz -pg 1 -lvl 1 -x 230 -y 1050 -defaultsOSRD -pinDir CLK_IN_D left -pinY CLK_IN_D 0L -pinBusDir IBUF_OUT right -pinBusY IBUF_OUT 0R
+preplace inst pcie_axi_bridge -pg 1 -lvl 1 -x 230 -y 200 -swap {61 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 0 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 20 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 121 120 126 123 122 125 124} -defaultsOSRD -pinDir S_BRIDGE_CTRL_AXI right -pinY S_BRIDGE_CTRL_AXI 80R -pinDir S_AXI_B right -pinY S_AXI_B 0R -pinDir pcie_mgt left -pinY pcie_mgt 0L -pinDir M_AXI_B right -pinY M_AXI_B 60R -pinDir S_INT_MGR_AXI right -pinY S_INT_MGR_AXI 560R -pinDir pci_refclk left -pinY pci_refclk 20L -pinDir axi_aresetn right -pinY axi_aresetn 680R -pinDir axi_aclk right -pinY axi_aclk 580R -pinDir led_pci_link_up right -pinY led_pci_link_up 760R -pinDir sys_rst_n left -pinY sys_rst_n 760L -pinDir IRQ_EOB_IN right -pinY IRQ_EOB_IN 700R -pinDir IRQ_UNDERFLOW_IN right -pinY IRQ_UNDERFLOW_IN 740R -pinDir IRQ_JOBCOMPLETE_IN right -pinY IRQ_JOBCOMPLETE_IN 720R
+preplace inst qsfp_data -pg 1 -lvl 7 -x 2780 -y 80 -swap {44 1 2 0 4 5 49 7 8 9 35 11 12 13 14 54 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 59 36 37 38 3 40 41 42 43 39 45 46 47 48 10 50 51 52 53 15 55 56 57 58 6 60 61 62 63 69 65 66 67 64 68} -defaultsOSRD -pinDir qsfp0_clk right -pinY qsfp0_clk 60R -pinDir qsfp1_clk right -pinY qsfp1_clk 0R -pinDir ROW_REQ_STREAM left -pinY ROW_REQ_STREAM 590L -pinDir QSFP_TX0_STREAM left -pinY QSFP_TX0_STREAM 220L -pinDir AXI_QSFP_STATUS left -pinY AXI_QSFP_STATUS 650L -pinDir EVENT_STREAM left -pinY EVENT_STREAM 670L -pinDir qsfp0_gt right -pinY qsfp0_gt 20R -pinDir qsfp1_gt right -pinY qsfp1_gt 40R -pinDir QSPF_TX1_STREAM left -pinY QSPF_TX1_STREAM 60L -pinDir SLOT_2_AXIS left -pinY SLOT_2_AXIS 160L -pinDir SLOT_3_AXIS left -pinY SLOT_3_AXIS 0L -pinDir init_clk left -pinY init_clk 970L -pinDir reset_in left -pinY reset_in 710L -pinDir qsfp0_channel_up right -pinY qsfp0_channel_up 80R -pinDir qsfp1_channel_up right -pinY qsfp1_channel_up 100R -pinDir data_clock left -pinY data_clock 690L -pinDir data_aresetn left -pinY data_aresetn 730L
+preplace inst restart_manager -pg 1 -lvl 3 -x 1030 -y 460 -defaultsOSRD -pinDir S_AXI left -pinY S_AXI 0L -pinDir clk left -pinY clk 20L -pinDir resetn left -pinY resetn 40L -pinDir restartn right -pinY restartn 0R
+preplace inst ch0_request_handler -pg 1 -lvl 4 -x 1490 -y 240 -swap {0 1 2 3 4 5 6 7 8 10 9 13 11 12} -defaultsOSRD -pinDir AXIS_TX right -pinY AXIS_TX 0R -pinDir S_AXIS left -pinY S_AXIS 0L -pinDir clk left -pinY clk 40L -pinDir resetn left -pinY resetn 20L -pinDir READY_FOR_REQ right -pinY READY_FOR_REQ 60R -pinDir REQ_ID_VALID right -pinY REQ_ID_VALID 20R -pinBusDir REQ_ID_IN right -pinBusY REQ_ID_IN 40R
+preplace inst system_interconnect -pg 1 -lvl 2 -x 610 -y 260 -swap {0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 158 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 78 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 204 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 98 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 138 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224} -defaultsOSRD -pinDir S00_AXI left -pinY S00_AXI 0L -pinDir M00_AXI left -pinY M00_AXI 20L -pinDir M01_AXI left -pinY M01_AXI 500L -pinDir M02_AXI right -pinY M02_AXI 400R -pinDir M03_AXI right -pinY M03_AXI 0R -pinDir M04_AXI right -pinY M04_AXI 100R -pinDir M05_AXI right -pinY M05_AXI 520R -pinDir M06_AXI right -pinY M06_AXI 20R -pinDir M07_AXI right -pinY M07_AXI 200R -pinDir aclk left -pinY aclk 520L
+preplace inst axi_revision -pg 1 -lvl 3 -x 1030 -y 660 -defaultsOSRD -pinDir S_AXI left -pinY S_AXI 0L -pinDir AXI_ACLK left -pinY AXI_ACLK 20L -pinDir AXI_ARESETN left -pinY AXI_ARESETN 40L
+preplace inst event_broker -pg 1 -lvl 4 -x 1490 -y 410 -swap {4 1 2 3 0 5 6 7 8 9 11 10} -defaultsOSRD -pinDir AXIS_IN right -pinY AXIS_IN 60R -pinDir AXIS_OUT right -pinY AXIS_OUT 40R -pinDir clk left -pinY clk 0L -pinDir resetn left -pinY resetn 20L -pinDir event_underflow left -pinY event_underflow 60L -pinDir event_jobcomplete left -pinY event_jobcomplete 40L
+preplace inst request_presenter -pg 1 -lvl 5 -x 1980 -y 300 -swap {0 1 2 3 8 7 4 5 6} -defaultsOSRD -pinDir FIFO right -pinY FIFO 80R -pinDir clk left -pinY clk 80L -pinDir ch0_ready left -pinY ch0_ready 60L -pinDir ch1_ready left -pinY ch1_ready 0L -pinDir req_id_valid left -pinY req_id_valid 20L -pinBusDir req_id left -pinBusY req_id 40L
+preplace inst ecd_master_ctrl -pg 1 -lvl 3 -x 1030 -y 110 -swap {4 1 2 3 0 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 68 66 67 65} -defaultsOSRD -pinDir AXIS_TX0 right -pinY AXIS_TX0 130R -pinDir AXIS_TX1 right -pinY AXIS_TX1 0R -pinDir M_AXI left -pinY M_AXI 90L -pinDir S_AXI left -pinY S_AXI 150L -pinDir clk left -pinY clk 170L -pinDir resetn right -pinY resetn 190R -pinDir IRQ_EOB left -pinY IRQ_EOB 190L -pinDir PRELOAD_COMPLETE right -pinY PRELOAD_COMPLETE 170R -pinDir DRAINING right -pinY DRAINING 150R
+preplace inst ch1_request_handler -pg 1 -lvl 4 -x 1490 -y 90 -defaultsOSRD -pinDir AXIS_TX right -pinY AXIS_TX 0R -pinDir S_AXIS left -pinY S_AXIS 20L -pinDir clk left -pinY clk 40L -pinDir resetn left -pinY resetn 60L -pinDir READY_FOR_REQ right -pinY READY_FOR_REQ 20R -pinDir REQ_ID_VALID right -pinY REQ_ID_VALID 40R -pinBusDir REQ_ID_IN right -pinBusY REQ_ID_IN 60R
+preplace inst ch0_axis_switch -pg 1 -lvl 6 -x 2370 -y 300 -defaultsOSRD -pinDir AXIS_IN1 left -pinY AXIS_IN1 0L -pinDir AXIS_IN2 left -pinY AXIS_IN2 200L -pinDir AXIS_OUT right -pinY AXIS_OUT 0R -pinDir clk left -pinY clk 220L
+preplace inst ch1_axis_switch -pg 1 -lvl 6 -x 2370 -y 140 -defaultsOSRD -pinDir AXIS_IN1 left -pinY AXIS_IN1 0L -pinDir AXIS_IN2 left -pinY AXIS_IN2 20L -pinDir AXIS_OUT right -pinY AXIS_OUT 0R -pinDir clk left -pinY clk 40L
+preplace inst axi4lite_proxy -pg 1 -lvl 5 -x 1980 -y 480 -swap {0 1 2 3 9 5 6 7 8 4 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 35 36 34} -defaultsOSRD -pinDir AXIS_IN left -pinY AXIS_IN 0L -pinDir AXIS_OUT_HI right -pinY AXIS_OUT_HI 20R -pinDir AXIS_OUT_LO right -pinY AXIS_OUT_LO 0R -pinDir S_AXI left -pinY S_AXI 50L -pinDir clk left -pinY clk 90L -pinDir resetn left -pinY resetn 110L -pinDir preload_complete left -pinY preload_complete 70L
+preplace netloc REQ_ID_IN_1 1 4 1 1770 150n
+preplace netloc REQ_ID_VALID_1 1 4 1 1790 130n
+preplace netloc ch1_request_manager_READY_FOR_REQ 1 4 1 1810J 110n
+preplace netloc ecd_master_ctrl_IRQ_PPB0 1 1 2 NJ 900 790J
+preplace netloc ecd_master_ctrl_PRELOAD_COMPLETE 1 3 2 1310 350 1730J
+preplace netloc event_broker_event_jobcomplete 1 1 3 NJ 920 830J 560 1230J
+preplace netloc event_broker_event_underflow 1 1 3 NJ 940 850J 580 1250J
+preplace netloc ext_reset_in_0_1 1 0 1 NJ 1230
+preplace netloc ila_250mhz 1 1 6 470 860 750 400 1330 550 1710 670 2150 630 2570J
+preplace netloc pcie_axi_bridge_led_pci_link_up 1 1 7 NJ 960 870J 600 1190J 610 1650J 690 NJ 690 2550J 20 NJ
+preplace netloc qsfp_data_channel_up_0 1 7 1 NJ 160
+preplace netloc qsfp_data_channel_up_1 1 7 1 NJ 180
+preplace netloc request_manager_READY_FOR_REQ 1 4 1 1750J 300n
+preplace netloc reset_in_1 1 1 6 450J 840 770J 380 1270J 570 1690J 650 NJ 650 2530J
+preplace netloc restartn 1 3 2 1210 590 NJ
+preplace netloc system_reset_100mhz_peripheral_aresetn 1 0 1 20 960n
+preplace netloc util_ds_buf_0_IBUF_OUT 1 1 6 430J 1050 NJ 1050 NJ 1050 NJ 1050 NJ 1050 N
+preplace netloc xdma_0_axi_aresetn 1 1 6 NJ 880 810 760 NJ 760 1650J 710 2190J 770 2510J
+preplace netloc CLK_IN_D_0_1 1 0 1 NJ 1050
+preplace netloc GT_DIFF_REFCLK1_0_1 1 7 1 NJ 140
+preplace netloc GT_DIFF_REFCLK1_0_3 1 7 1 NJ 80
+preplace netloc axi4lite_proxy_AXIS_OUT_HI 1 5 1 N 500
+preplace netloc axi4lite_proxy_AXIS_OUT_LO 1 5 1 2190 160n
+preplace netloc axis_switch_0_AXIS_OUT 1 6 1 N 300
+preplace netloc ch1_axis_switch_AXIS_OUT 1 6 1 N 140
+preplace netloc ch1_request_manager_AXIS_TX 1 4 3 NJ 90 2150J 80 N
+preplace netloc ecd_master_ctrl_AXIS_TX0 1 3 1 N 240
+preplace netloc ecd_master_ctrl_AXIS_TX1 1 3 1 N 110
+preplace netloc ecd_master_ctrl_M_AXI 1 1 2 NJ 200 NJ
+preplace netloc event_broker_0_AXIS_OUT 1 4 1 1690 450n
+preplace netloc pci_refclk_1 1 0 1 NJ 220
+preplace netloc pcie_axi_bridge_M_AXI_B 1 1 1 N 260
+preplace netloc pcie_axi_bridge_pcie_mgt 1 0 1 NJ 200
+preplace netloc qsfp_data_EVENT_STREAM 1 4 3 1670J 750 NJ 750 NJ
+preplace netloc qsfp_data_ROW_REQ_STREAM 1 5 2 2170 670 NJ
+preplace netloc qsfp_data_gt_serial_port_0 1 7 1 NJ 100
+preplace netloc qsfp_data_gt_serial_port_1 1 7 1 NJ 120
+preplace netloc request_manager_AXIS_TX 1 4 3 NJ 240 2210J 240 N
+preplace netloc system_interconnect_M00_AXI 1 1 1 N 280
+preplace netloc system_interconnect_M01_AXI 1 1 1 N 760
+preplace netloc system_interconnect_M02_AXI 1 2 1 N 660
+preplace netloc system_interconnect_M03_AXI 1 2 1 N 260
+preplace netloc system_interconnect_M04_AXI 1 2 3 NJ 360 1290J 530 NJ
+preplace netloc system_interconnect_M05_AXI 1 2 5 NJ 780 NJ 780 1750J 730 NJ 730 NJ
+preplace netloc system_interconnect_M07_AXI 1 2 1 N 460
+levelinfo -pg 1 0 230 610 1030 1490 1980 2370 2780 2970
+pagesize -pg 1 -db -bbox -sgen -140 0 3130 1290
 ",
-   "No Loops_ScaleFactor":"0.985294",
-   "No Loops_TopLeft":"1128,31",
+   "No Loops_ScaleFactor":"0.408157",
+   "No Loops_TopLeft":"-135,-250",
    "Reduced Jogs_ExpandedHierarchyInLayout":"",
    "Reduced Jogs_Layout":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD

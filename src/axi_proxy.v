@@ -25,18 +25,18 @@ module axi_proxy
     // This signal strobes high when the master data-FIFO first fills up
     input preload_complete,
 
-    //===========  Channel 0 AXI Stream interface for the AXI request ==========
-    output[511:0]  AXIS_OUT0_TDATA,
-    output reg     AXIS_OUT0_TVALID,
-    output         AXIS_OUT0_TLAST,
-    input          AXIS_OUT0_TREADY,
+    //===========  Lo order AXI Stream interface for the AXI request ===========
+    output[511:0]  AXIS_OUT_LO_TDATA,
+    output reg     AXIS_OUT_LO_TVALID,
+    output         AXIS_OUT_LO_TLAST,
+    input          AXIS_OUT_LO_TREADY,
     //==========================================================================
 
-    //===========  Channel 1 AXI Stream interface for the AXI request ==========
-    output[511:0]  AXIS_OUT1_TDATA,
-    output reg     AXIS_OUT1_TVALID,
-    output         AXIS_OUT1_TLAST,
-    input          AXIS_OUT1_TREADY,
+    //===========  Hi order AXI Stream interface for the AXI request ===========
+    output[511:0]  AXIS_OUT_HI_TDATA,
+    output reg     AXIS_OUT_HI_TVALID,
+    output         AXIS_OUT_HI_TLAST,
+    input          AXIS_OUT_HI_TREADY,
     //==========================================================================
 
 
@@ -108,8 +108,8 @@ module axi_proxy
     //===============================================================================================
     // Outgoing AXI stream packets are always exactly 1 data-cycle long
     //===============================================================================================
-    assign AXIS_OUT0_TLAST = 1;
-    assign AXIS_OUT1_TLAST = 1;
+    assign AXIS_OUT_LO_TLAST = 1;
+    assign AXIS_OUT_HI_TLAST = 1;
     //===============================================================================================
     
     //===============================================================================================
@@ -122,15 +122,15 @@ module axi_proxy
     wire[ 2:0] axi_resp_in = AXIS_IN_TDATA[66:64];
 
     // Address and data registers for AXI4-Lite reads and writes
-    reg[31:0] axi_addr_out; assign AXIS_OUT0_TDATA[31:00] = axi_addr_out;
-    reg[31:0] axi_data_out; assign AXIS_OUT0_TDATA[63:32] = axi_data_out;
-    reg       axi_mode_out; assign AXIS_OUT0_TDATA[64   ] = axi_mode_out;
+    reg[31:0] axi_addr_out; assign AXIS_OUT_LO_TDATA[31:00] = axi_addr_out;
+    reg[31:0] axi_data_out; assign AXIS_OUT_LO_TDATA[63:32] = axi_data_out;
+    reg       axi_mode_out; assign AXIS_OUT_LO_TDATA[64   ] = axi_mode_out;
 
     // Set the packet-type to 1
-    assign AXIS_OUT0_TDATA[511:504] = 1;
+    assign AXIS_OUT_LO_TDATA[511:504] = 1;
 
-    // Channel 1 output data is always 0
-    assign AXIS_OUT1_TDATA = 0;
+    // The high order bytes of output data is always 0
+    assign AXIS_OUT_HI_TDATA = 0;
 
     //===============================================================================================
 
@@ -169,10 +169,10 @@ module axi_proxy
 
         // If we're in reset, initialize important registers
         if (resetn == 0) begin
-            fsm_state        <= 0;
-            AXIS_OUT0_TVALID <= 0;
-            AXIS_OUT1_TVALID <= 0;
-            AXIS_IN_TREADY   <= 0;
+            fsm_state          <= 0;
+            AXIS_OUT_LO_TVALID <= 0;
+            AXIS_OUT_HI_TVALID <= 0;
+            AXIS_IN_TREADY     <= 0;
         
         // If we're not in reset...
         end else case(fsm_state)
@@ -193,13 +193,13 @@ module axi_proxy
 
                         // If the user wants to write a value to the stored AXI register address...
                         1:  begin
-                                axi_addr_out    <= axi_register[0]; // Stuff the AXI address into TDATA
-                                axi_data_out    <= ashi_wdata;      // Stuff the data value into TDATA 
-                                axi_mode_out    <= AXI_MODE_WRITE;  // This will be an AXI write
-                                AXIS_OUT0_TVALID <= 1;              // And declare TDATA valid for 1 cycle
-                                AXIS_OUT1_TVALID <= 1;
-                                fsm_state       <= FSM_AXI_STREAM_HANDSHAKE;
-                                next_state      <= FSM_WAIT_FOR_WRESP;
+                                axi_addr_out       <= axi_register[0]; // Stuff the AXI address into TDATA
+                                axi_data_out       <= ashi_wdata;      // Stuff the data value into TDATA 
+                                axi_mode_out       <= AXI_MODE_WRITE;  // This will be an AXI write
+                                AXIS_OUT_LO_TVALID <= 1;              // And declare TDATA valid for 1 cycle
+                                AXIS_OUT_HI_TVALID <= 1;
+                                fsm_state          <= FSM_AXI_STREAM_HANDSHAKE;
+                                next_state         <= FSM_WAIT_FOR_WRESP;
                             end
 
                         // A write to any other address is a slave-error
@@ -220,13 +220,13 @@ module axi_proxy
 
                         // If the user wants to write a value to the stored AXI register address...
                         1:  begin
-                                axi_addr_out    <= axi_register[0]; // Stuff the AXI address into TDATA
-                                axi_data_out    <= 32'hDEAD_BEEF;   // Doesn't matter what we stuff here
-                                axi_mode_out    <= AXI_MODE_READ;   // This will be an AXI read
-                                AXIS_OUT0_TVALID <= 1;               // And declare TDATA valid for 1 cycle
-                                AXIS_OUT1_TVALID <= 1;
-                                fsm_state       <= FSM_AXI_STREAM_HANDSHAKE;
-                                next_state      <= FSM_WAIT_FOR_RRESP;
+                                axi_addr_out       <= axi_register[0]; // Stuff the AXI address into TDATA
+                                axi_data_out       <= 32'hDEAD_BEEF;   // Doesn't matter what we stuff here
+                                axi_mode_out       <= AXI_MODE_READ;   // This will be an AXI read
+                                AXIS_OUT_LO_TVALID <= 1;               // And declare TDATA valid for 1 cycle
+                                AXIS_OUT_HI_TVALID <= 1;
+                                fsm_state          <= FSM_AXI_STREAM_HANDSHAKE;
+                                next_state         <= FSM_WAIT_FOR_RRESP;
                             end
 
                         // A write to any other address is a slave-error
@@ -236,13 +236,13 @@ module axi_proxy
  
                 // If we're being told to write to the "preload-complete" AXI register...
                 else if (preload_complete) begin
-                    axi_addr_out    <= ECD_PRELOAD_ADDR; // Stuff the AXI address into TDATA
-                    axi_data_out    <= ECD_PRELOAD_VALU; // Stuff the data value into TDATA 
-                    axi_mode_out    <= AXI_MODE_WRITE;   // This will be an AXI write
-                    AXIS_OUT0_TVALID <= 1;               // And declare TDATA valid for 1 cycle
-                    AXIS_OUT1_TVALID <= 1;
-                    fsm_state       <= FSM_AXI_STREAM_HANDSHAKE;
-                    next_state      <= FSM_WAIT_FOR_WRESP;
+                    axi_addr_out       <= ECD_PRELOAD_ADDR; // Stuff the AXI address into TDATA
+                    axi_data_out       <= ECD_PRELOAD_VALU; // Stuff the data value into TDATA 
+                    axi_mode_out       <= AXI_MODE_WRITE;   // This will be an AXI write
+                    AXIS_OUT_LO_TVALID <= 1;               // And declare TDATA valid for 1 cycle
+                    AXIS_OUT_HI_TVALID <= 1;
+                    fsm_state          <= FSM_AXI_STREAM_HANDSHAKE;
+                    next_state         <= FSM_WAIT_FOR_WRESP;
                  end
 
 
@@ -251,13 +251,13 @@ module axi_proxy
                 begin
             
                     // If handshake has occured on ch0, lower TVALID
-                    if (AXIS_OUT0_TVALID && AXIS_OUT0_TREADY) AXIS_OUT0_TVALID <= 0;
+                    if (AXIS_OUT_LO_TVALID && AXIS_OUT_LO_TREADY) AXIS_OUT_LO_TVALID <= 0;
                     
                     // If handshake has occured on ch1, lower TVALID
-                    if (AXIS_OUT1_TVALID && AXIS_OUT1_TREADY) AXIS_OUT1_TVALID <= 0;                
+                    if (AXIS_OUT_HI_TVALID && AXIS_OUT_HI_TREADY) AXIS_OUT_HI_TVALID <= 0;                
 
                     // If both handshakes have occured, we're ready to accept a response packed
-                    if (AXIS_OUT0_TVALID == 0 && AXIS_OUT1_TVALID == 0) begin
+                    if (AXIS_OUT_LO_TVALID == 0 && AXIS_OUT_HI_TVALID == 0) begin
                         AXIS_IN_TREADY <= 1;
                         fsm_state      <= next_state;
                     end

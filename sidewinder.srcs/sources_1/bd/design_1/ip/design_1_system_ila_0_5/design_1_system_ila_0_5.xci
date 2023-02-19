@@ -3658,7 +3658,7 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SLOT_4_AXI_W_SEL">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SLOT_4_AXI_W_SEL_DATA">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SLOT_4_AXI_W_SEL_TRIG">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SLOT_4_INTF_TYPE">xilinx.com:interface:aximm_rtl:1.0</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SLOT_4_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SLOT_4_MAX_RD_BURSTS">2</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SLOT_4_MAX_WR_BURSTS">2</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SLOT_4_TXN_CNTR_EN">1</spirit:configurableElementValue>
@@ -3981,6 +3981,11 @@
             <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SLOT_3_AXIS.TUSER_WIDTH" xilinx:valuePermission="bd"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_MON_TYPE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_NUM_MONITOR_SLOTS" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_NUM_OF_PROBES" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE0_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE1_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE2_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE3_TYPE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_0_APC_EN" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_0_AXIS_TDATA_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_0_AXIS_TDEST_WIDTH" xilinx:valuePermission="bd_and_user"/>
@@ -4093,15 +4098,26 @@
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXIS_TUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_ADDR_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_ARUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_AR_SEL_DATA" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_AR_SEL_TRIG" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_AWUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_AW_SEL_DATA" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_AW_SEL_TRIG" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_BUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_B_SEL_DATA" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_B_SEL_TRIG" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_DATA_SEL" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_DATA_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_ID_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_RUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_R_SEL_DATA" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_R_SEL_TRIG" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_TRIG_SEL" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_WUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_W_SEL_DATA" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_AXI_W_SEL_TRIG" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_INTF_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_2_TYPE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_3_APC_EN" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_3_AXIS_TDATA_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_3_AXIS_TDEST_WIDTH" xilinx:valuePermission="bd_and_user"/>
@@ -4118,6 +4134,8 @@
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_3_AXI_TRIG_SEL" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_3_AXI_WUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_3_INTF_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_3_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_APC_EN" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXIS_TDATA_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXIS_TDEST_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXIS_TID_WIDTH" xilinx:valuePermission="bd_and_user"/>
@@ -4126,10 +4144,13 @@
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXI_ARUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXI_AWUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXI_BUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXI_DATA_SEL" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXI_DATA_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXI_ID_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXI_RUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXI_TRIG_SEL" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_AXI_WUSER_WIDTH" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_4_INTF_TYPE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_5_AXIS_TDATA_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_5_AXIS_TDEST_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SLOT_5_AXIS_TID_WIDTH" xilinx:valuePermission="bd_and_user"/>

@@ -40,7 +40,7 @@ module req_manager #
     //========================  AXI Stream interface for data_output  ===============================
     output reg[511:0]  AXIS_TX_TDATA,
     output reg         AXIS_TX_TVALID,
-    output             AXIS_TX_TLAST,
+    output reg         AXIS_TX_TLAST,
     input              AXIS_TX_TREADY,
     //===============================================================================================
 
@@ -51,13 +51,11 @@ module req_manager #
     //===============================================================================================
 
 );
+// Set this to zero to 1 to assert TLAST on every cycle, 0 to only assert it on the row-footer
+localparam TLAST_DEFAULT = 0;
 
 // This is how many beats of the RX data stream are in a single outgoing packet
 localparam RX_BEATS_PER_PACKET = 16;
-
-//?????????????????????????????    FIX THIS   ?????????????????????????????????????
-assign AXIS_TX_TLAST = 1;
-
 
 //===================================================================================================
 // Define a virtual AXI stream interface that maps to either RX0 or RX1
@@ -159,6 +157,7 @@ always @(posedge clk) begin
     
     if (resetn == 0) begin
         AXIS_TX_TVALID   <= 0;
+        AXIS_TX_TLAST    <= TLAST_DEFAULT;
         AXIS_RX_TREADY   <= 0;
         input_sel        <= 0;
         fsm_state        <= FSM_WAIT_FOR_REQ;
@@ -198,50 +197,51 @@ always @(posedge clk) begin
 
         // If data arrives from the RX stream, transmit it
         if (AXIS_RX_TVALID & AXIS_RX_TREADY) begin
-            AXIS_TX_TDATA   <= AXIS_RX_TDATA;
-            AXIS_TX_TVALID  <= 1;
-            AXIS_RBF_TDATA  <= AXIS_RX_TDATA;
-            AXIS_RBF_TVALID <= (input_sel == 0);
-            AXIS_RX_TREADY  <= (beat_countdown != 1);
-            fsm_state       <= FSM_SEND_DATA;
+            AXIS_TX_TDATA   <= AXIS_RX_TDATA;              // Copy data from the RX bus to the TX bus
+            AXIS_TX_TVALID  <= 1;                          // The TX bus now contains valid data
+            AXIS_RBF_TDATA  <= AXIS_RX_TDATA;              // Copy data from the RX bus to the RBF bus
+            AXIS_RBF_TVALID <= (input_sel == 0);           // We only write to the RBF when reading from RX0
+            AXIS_RX_TREADY  <= (beat_countdown != 1);      // Do we still need to receive for data for this burst?
+            fsm_state       <= FSM_SEND_DATA;              // And go wait for the TX handshake
         end    
 
     FSM_SEND_DATA:
         
-        // If our previous write is finished...
+        // If we've received the TX handshake signaling that the previous write is finished...
         if (AXIS_TX_TVALID & AXIS_TX_TREADY) begin
         
             // If that was the last beat of the burst, emit the row footer
             if (beat_countdown == 0) begin
-                AXIS_RX_TREADY  <= 0;
-                AXIS_RBF_TVALID <= 0;                   // We're not writing data to the row-buffer FIFO
-                AXIS_TX_TDATA   <= req_id;              // This is the footer data-cycle that we write
-                input_sel       <= ~input_sel;          // Switch the RX stream to the "other" RX stream
-                fsm_state       <= FSM_WAIT_FOR_FINISH; // And go wait for the footer-cycle to be accepted
+                AXIS_RX_TREADY  <= 0;                      // Don't accept further any RX data for the moment
+                AXIS_RBF_TVALID <= 0;                      // We're not writing data to the row-buffer FIFO
+                AXIS_TX_TDATA   <= req_id;                 // This is the footer data-cycle that we write
+                AXIS_TX_TLAST   <= 1;                      // The row-footer marks the end of the packet
+                input_sel       <= ~input_sel;             // Switch the RX stream to the "other" RX stream
+                fsm_state       <= FSM_WAIT_FOR_FINISH;    // And go wait for the footer-cycle to be accepted
             end
 
             // Otherwise, if there is data in the skid buffer, transmit it
             else if (skid_buffer_full) begin
-                AXIS_TX_TDATA    <= skid_buffer;
-                AXIS_TX_TVALID   <= 1;
-                AXIS_RBF_TDATA   <= skid_buffer;
-                AXIS_RBF_TVALID  <= (input_sel == 0);
-                skid_buffer_full <= 0;
-                AXIS_RX_TREADY   <= (beat_countdown != 1);
+                AXIS_TX_TDATA    <= skid_buffer;           // Copy the skid-buffer to the TX bus
+                AXIS_TX_TVALID   <= 1;                     // The TX bus now contains valid data
+                AXIS_RBF_TDATA   <= skid_buffer;           // Copy the skid-buffer to the RBF bus
+                AXIS_RBF_TVALID  <= (input_sel == 0);      // We only write to the RBF when reading from RX0
+                skid_buffer_full <= 0;                     // The skid-buffer is now empty
+                AXIS_RX_TREADY   <= (beat_countdown != 1); // Do we still need to receive data for this burst?
             end
 
             // Otherwise, if data has arrived from the RX stream, transmit it
-            else if (AXIS_RX_TVALID & AXIS_RX_TREADY) begin
-                AXIS_TX_TDATA   <= AXIS_RX_TDATA;
-                AXIS_TX_TVALID  <= 1;
-                AXIS_RBF_TDATA  <= AXIS_RX_TDATA;
-                AXIS_RBF_TVALID <= (input_sel == 0);
-                AXIS_RX_TREADY  <= (beat_countdown != 1);
+            else if (AXIS_RX_TVALID & AXIS_RX_TREADY) begin    
+                AXIS_TX_TDATA   <= AXIS_RX_TDATA;          // Copy the data from the RX bus to the TX bus
+                AXIS_TX_TVALID  <= 1;                      // The TX bus now has valid data
+                AXIS_RBF_TDATA  <= AXIS_RX_TDATA;          // Copy the data from the RX bus to the RBF bus
+                AXIS_RBF_TVALID <= (input_sel == 0);       // We only write to the RBF when reading from RX0
+                AXIS_RX_TREADY  <= (beat_countdown != 1);  // Do we still need to receive data for this burst?
             end
 
-            // Otherwise, go wait for more data to arrive
+            // If we get here, no RX data is waiting, so go wait for more data to arrive
             else begin
-                AXIS_RBF_TVALID <= 0;
+                AXIS_RBF_TVALID <= 0;                      
                 AXIS_TX_TVALID  <= 0;
                 fsm_state       <= FSM_WAIT_FOR_DATA;
             end
@@ -263,6 +263,9 @@ always @(posedge clk) begin
 
         // If the packet footer was accepted...
         if (AXIS_TX_TREADY) begin
+
+            // The next data-cycle we write is the start of a new packet
+            AXIS_TX_TLAST <= TLAST_DEFAULT;
 
             // If we have another data-request pending...
             if (rq_data_valid) begin

@@ -38,7 +38,7 @@
       </spirit:portMaps>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>AXIS_OUT0</spirit:name>
+      <spirit:name>AXIS_OUT_HI</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
       <spirit:master/>
@@ -48,7 +48,7 @@
             <spirit:name>TDATA</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>AXIS_OUT0_TDATA</spirit:name>
+            <spirit:name>AXIS_OUT_HI_TDATA</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -56,7 +56,7 @@
             <spirit:name>TLAST</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>AXIS_OUT0_TLAST</spirit:name>
+            <spirit:name>AXIS_OUT_HI_TLAST</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -64,7 +64,7 @@
             <spirit:name>TVALID</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>AXIS_OUT0_TVALID</spirit:name>
+            <spirit:name>AXIS_OUT_HI_TVALID</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -72,13 +72,13 @@
             <spirit:name>TREADY</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>AXIS_OUT0_TREADY</spirit:name>
+            <spirit:name>AXIS_OUT_HI_TREADY</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>AXIS_OUT1</spirit:name>
+      <spirit:name>AXIS_OUT_LO</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
       <spirit:master/>
@@ -88,7 +88,7 @@
             <spirit:name>TDATA</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>AXIS_OUT1_TDATA</spirit:name>
+            <spirit:name>AXIS_OUT_LO_TDATA</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -96,7 +96,7 @@
             <spirit:name>TLAST</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>AXIS_OUT1_TLAST</spirit:name>
+            <spirit:name>AXIS_OUT_LO_TLAST</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -104,7 +104,7 @@
             <spirit:name>TVALID</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>AXIS_OUT1_TVALID</spirit:name>
+            <spirit:name>AXIS_OUT_LO_TVALID</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -112,7 +112,7 @@
             <spirit:name>TREADY</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>AXIS_OUT1_TREADY</spirit:name>
+            <spirit:name>AXIS_OUT_LO_TREADY</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
@@ -319,7 +319,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>ASSOCIATED_BUSIF</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF">AXIS_IN:AXIS_OUT0:AXIS_OUT1:S_AXI</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF">AXIS_IN:AXIS_OUT_HI:AXIS_OUT_LO:S_AXI</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>ASSOCIATED_RESET</spirit:name>
@@ -351,7 +351,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>6c4c39e1</spirit:value>
+            <spirit:value>42f3ad1f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -364,7 +364,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>6c4c39e1</spirit:value>
+            <spirit:value>42f3ad1f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -418,7 +418,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>AXIS_OUT0_TDATA</spirit:name>
+        <spirit:name>AXIS_OUT_LO_TDATA</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -435,7 +435,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>AXIS_OUT0_TVALID</spirit:name>
+        <spirit:name>AXIS_OUT_LO_TVALID</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -448,7 +448,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>AXIS_OUT0_TLAST</spirit:name>
+        <spirit:name>AXIS_OUT_LO_TLAST</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -461,7 +461,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>AXIS_OUT0_TREADY</spirit:name>
+        <spirit:name>AXIS_OUT_LO_TREADY</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -477,7 +477,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>AXIS_OUT1_TDATA</spirit:name>
+        <spirit:name>AXIS_OUT_HI_TDATA</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -494,7 +494,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>AXIS_OUT1_TVALID</spirit:name>
+        <spirit:name>AXIS_OUT_HI_TVALID</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -507,7 +507,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>AXIS_OUT1_TLAST</spirit:name>
+        <spirit:name>AXIS_OUT_HI_TLAST</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -520,7 +520,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>AXIS_OUT1_TREADY</spirit:name>
+        <spirit:name>AXIS_OUT_HI_TREADY</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -939,7 +939,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2023-02-18T05:26:50Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2023-02-18T08:23:04Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2021.1</xilinx:xilinxVersion>
