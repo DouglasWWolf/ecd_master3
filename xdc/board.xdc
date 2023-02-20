@@ -25,9 +25,6 @@ set_clock_groups -name group_pcie_sysclk -asynchronous -group [get_clocks pcie_s
 set_disable_timing [get_ports pb_rst_n        ]
 set_disable_timing [get_ports led_pci_link_up ]
 
-
-
-
 #######################################
 #  Miscellaneous
 #######################################
