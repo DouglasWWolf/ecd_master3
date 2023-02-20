@@ -8,30 +8,16 @@
 //====================================================================================
 
 
-module axi_qsfp_status #
-(
-    parameter LANE_COUNT = 4
-)
+module axi_qsfp_status
 (
     // Clock and reset
     input clk, resetn,
 
     // Status signals, QSFP 0
-    input                 ss0_channel_up,
-    input                 ss0_gt_pll_lock,
-    input                 ss0_hard_err,
-    input[LANE_COUNT-1:0] ss0_lane_up,
-    input                 ss0_mcmm_not_locked_out,
-    input                 ss0_soft_err,
+    input ss0_channel_up,
 
     // Status signals, QSFP 1
-    input                 ss1_channel_up,
-    input                 ss1_gt_pll_lock,
-    input                 ss1_hard_err,
-    input[LANE_COUNT-1:0] ss1_lane_up,
-    input                 ss1_mcmm_not_locked_out,
-    input                 ss1_soft_err,
-
+    input ss1_channel_up,
 
     //================== This is an AXI4-Lite slave interface ==================
         
@@ -102,20 +88,9 @@ module axi_qsfp_status #
 
     // Stuff our status signals into a status word
     wire[31:0] status_word;
-    assign status_word[  3:0] = ss0_lane_up;
-    assign status_word[    4] = ss0_channel_up;
-    assign status_word[    5] = ss0_gt_pll_lock;
-    assign status_word[    6] = ss0_hard_err;
-    assign status_word[    7] = ss0_mcmm_not_locked_out;
-    assign status_word[    8] = ss0_soft_err;
-
-    assign status_word[19:16] = ss1_lane_up;
-    assign status_word[   20] = ss1_channel_up;
-    assign status_word[   21] = ss1_gt_pll_lock;
-    assign status_word[   22] = ss1_hard_err;
-    assign status_word[   23] = ss1_mcmm_not_locked_out;
-    assign status_word[   24] = ss1_soft_err;
-
+    assign status_word[ 0] = ss0_channel_up;
+    assign status_word[16] = ss1_channel_up;
+    
 
     //==========================================================================
     // This state machine handles AXI write-requests
