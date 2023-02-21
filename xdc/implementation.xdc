@@ -7,4 +7,3 @@
 #
 set_false_path -through [get_nets */qsfp_data/qsfp_status/ss0_*]
 set_false_path -through [get_nets */qsfp_data/qsfp_status/ss1_*]
-set_false_path -through [get_nets */qsfp_data/rx_tx_enable/*   ]

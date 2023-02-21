@@ -25,6 +25,9 @@ module axi_proxy
     // This signal strobes high when the master data-FIFO first fills up
     input preload_complete,
 
+    // This will be active when test-packets are being sent
+    output reg sending_testp,
+
     //===========  Lo order AXI Stream interface for the AXI request ===========
     output reg [511:0]  AXIS_OUT_LO_TDATA,
     output reg          AXIS_OUT_LO_TVALID,
@@ -207,6 +210,7 @@ localparam OSM_AXI_WAIT_RESP  = 3;
 localparam OSM_START_TESTP    = 4;
 localparam OSM_NEXT_TESTP     = 5;
 localparam OSM_SEND_ONE_TESTP = 6;
+localparam OSM_FINISH_TESTP   = 7;
 
 reg[31:0]  osm_axi_addr;
 reg[31:0]  osm_axi_wdata;
@@ -224,6 +228,7 @@ wire osm_idle = (osm_cmd == 0 & osm0_state == OSM_IDLE & osm1_state == OSM_IDLE)
 always @(posedge clk) begin
     if (resetn == 0) begin
         osm0_state         <= OSM_IDLE;
+        sending_testp      <= 0;
         AXIS_OUT_LO_TVALID <= 0;
         AXIS_IN_TREADY     <= 0;
 
@@ -272,6 +277,7 @@ always @(posedge clk) begin
             if (axi_reg[REG_TESTP_COUNT]) begin
                 osm0_testp_count  <= axi_reg[REG_TESTP_COUNT];
                 osm0_testp_length <= axi_reg[REG_TESTP_LENGTH] ? axi_reg[REG_TESTP_LENGTH] : 18;
+                sending_testp     <= 1;
                 osm0_state        <= OSM_NEXT_TESTP;
             end else begin
                 osm0_state        <= OSM_IDLE;
@@ -287,7 +293,8 @@ always @(posedge clk) begin
                 osm0_state         <= OSM_SEND_ONE_TESTP;
                 osm0_testp_count   <= osm0_testp_count - 1;
             end else begin
-                osm0_state         <= OSM_IDLE;
+                osm0_cycle         <= 10000;
+                osm0_state         <= OSM_FINISH_TESTP;
             end
 
         OSM_SEND_ONE_TESTP:
@@ -299,6 +306,17 @@ always @(posedge clk) begin
                     osm0_state <= OSM_NEXT_TESTP;
                 end
                 osm0_cycle <= osm0_cycle - 1;
+            end
+
+        // We're assuming we have a physical loopback connector installed 
+        // and we need to wait for all the packets we just sent to arrive
+        // before lowering the "sending_testp" line
+        OSM_FINISH_TESTP:
+            if (osm0_cycle)
+                osm0_cycle <= osm0_cycle -1;
+            else begin
+                sending_testp <= 0;
+                osm0_state    <= OSM_IDLE;
             end
 
    endcase

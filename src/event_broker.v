@@ -19,6 +19,9 @@ module event_broker #
 (
     input clk, resetn,
 
+    // If this is high, the input data-stream will be ignored
+    input ignore_rx,
+
     // This will strobe high for one cycle when an "overflow" event message arrives
     output reg event_underflow,
 
@@ -72,7 +75,7 @@ always @(posedge clk) begin
             end
 
         // If we've received an event message...
-        1:  if (AXIS_IN_TVALID & AXIS_IN_TREADY) begin
+        1:  if (AXIS_IN_TVALID & AXIS_IN_TREADY & ~ignore_rx) begin
                 if (message_type == 0) begin
                     AXIS_OUT_TDATA  <= AXIS_IN_TDATA;
                     AXIS_OUT_TVALID <= 1;
