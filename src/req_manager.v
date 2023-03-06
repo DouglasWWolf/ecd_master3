@@ -57,6 +57,9 @@ localparam TLAST_DEFAULT = 0;
 // This is how many beats of the RX data stream are in a single outgoing packet
 localparam RX_BEATS_PER_PACKET = 16;
 
+localparam PKT_TYPE_OFFS = 0;
+localparam ROW_ID_OFFS   = 8;
+
 //===================================================================================================
 // Define a virtual AXI stream interface that maps to either RX0 or RX1
 //===================================================================================================
@@ -174,7 +177,8 @@ always @(posedge clk) begin
             req_id <= rq_data;
 
             // Emit a packet-header which consists of the request ID
-            AXIS_TX_TDATA <= rq_data;
+            AXIS_TX_TDATA[PKT_TYPE_OFFS +: 8] <= 0;         // This is the message type
+            AXIS_TX_TDATA[ROW_ID_OFFS   +:32] <= rq_data;   // This is the request ID
 
             // We have valid data on the TX data bus
             AXIS_TX_TVALID <= 1;
@@ -274,7 +278,8 @@ always @(posedge clk) begin
                 req_id <= rq_data;
 
                 // Emit a packet-header which consists of the data-request ID
-                AXIS_TX_TDATA <= rq_data;
+                AXIS_TX_TDATA[PKT_TYPE_OFFS +: 8] <= 0;         // This is the message type
+                AXIS_TX_TDATA[ROW_ID_OFFS   +:32] <= rq_data;   // This is the request ID
 
                 // The TX_TDATA bus is valid (it contains the request-ID)
                 AXIS_TX_TVALID <= 1;

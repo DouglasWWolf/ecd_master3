@@ -55,8 +55,8 @@ preplace netloc qsfp1_clk_1 1 2 4 760J 340 1140J 420 1420J 320 NJ
 levelinfo -pg 1 0 180 520 950 1300 1580 1720
 pagesize -pg 1 -db -bbox -sgen -190 0 1910 770
 ",
-   "No Loops_ScaleFactor":"0.749505",
-   "No Loops_TopLeft":"-193,1",
+   "No Loops_ScaleFactor":"0.704057",
+   "No Loops_TopLeft":"-187,-135",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
 preplace port qsfp0_clk -pg 1 -lvl 0 -x -360 -y 150 -defaultsOSRD

@@ -41,11 +41,14 @@ module event_broker #
     //===============================================================================================
 );
 
+localparam MSG_TYPE_AXI = 1;
+localparam MSG_TYPE_EVT = 2;
+
 localparam EVENT_UNDERFLOW   = 1;
 localparam EVENT_JOBCOMPLETE = 2;
 
-wire[7:0] message_type = AXIS_IN_TDATA[255:248];
-wire[7:0] event_type   = AXIS_IN_TDATA[7:0];
+wire[7:0] message_type = AXIS_IN_TDATA[0 +:8];
+wire[7:0] event_type   = AXIS_IN_TDATA[8 +:8];
 
 reg[1:0] fsm_state;
 
@@ -76,14 +79,14 @@ always @(posedge clk) begin
 
         // If we've received an event message...
         1:  if (AXIS_IN_TVALID & AXIS_IN_TREADY & ~ignore_rx) begin
-                if (message_type == 0) begin
+                if (message_type == MSG_TYPE_AXI) begin
                     AXIS_OUT_TDATA  <= AXIS_IN_TDATA;
                     AXIS_OUT_TVALID <= 1;
                     AXIS_IN_TREADY  <= 0;
                     fsm_state       <= 2;
                 end
                 
-                else if (message_type == 1) begin
+                else if (message_type == MSG_TYPE_EVT) begin
                     if (event_type == EVENT_UNDERFLOW)   event_underflow   <= 1;
                     if (event_type == EVENT_JOBCOMPLETE) event_jobcomplete <= 1;
                 end

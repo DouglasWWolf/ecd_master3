@@ -127,17 +127,18 @@ wire AXIS_OUT_HI_HS = AXIS_OUT_HI_TVALID & AXIS_OUT_HI_TREADY;
 //===============================================================================================
 // Field definitions for the TDATA lines
 //===============================================================================================
+localparam PKT_TYPE_OFFS = 0;
+localparam AXI_MODE_OFFS = 8;
+localparam AXI_RESP_OFFS = 16;
+localparam AXI_ADDR_OFFS = 24;
+localparam AXI_DATA_OFFS = 56;
+    
 
 // Fields of the input stream
-wire[31:0] axi_addr_in = AXIS_IN_TDATA[31:00];
-wire[31:0] axi_data_in = AXIS_IN_TDATA[63:32];
-wire[ 2:0] axi_resp_in = AXIS_IN_TDATA[66:64];
-
-// Address and data registers for AXI4-Lite reads and writes
-localparam AXI_ADDR_OFFS = 0;
-localparam AXI_DATA_OFFS = 32;
-localparam AXI_MODE_OFFS = 64;
-localparam PKT_TYPE_OFFS = 504;
+wire[ 7:0] axi_mode_in = AXIS_IN_TDATA[AXI_MODE_OFFS +: 8];
+wire[ 7:0] axi_resp_in = AXIS_IN_TDATA[AXI_RESP_OFFS +: 8];
+wire[31:0] axi_addr_in = AXIS_IN_TDATA[AXI_ADDR_OFFS +:32];
+wire[31:0] axi_data_in = AXIS_IN_TDATA[AXI_DATA_OFFS +:32];
 
 // These are the kind of AXI remote-transactions that can be performed
 localparam AXI_MODE_WRITE = 0;
@@ -248,7 +249,7 @@ always @(posedge clk) begin
                 AXIS_OUT_LO_TDATA[PKT_TYPE_OFFS +:  8] <= PKT_AXI_TRANSACT;
                 AXIS_OUT_LO_TDATA[AXI_ADDR_OFFS +: 32] <= osm_axi_addr;
                 AXIS_OUT_LO_TDATA[AXI_DATA_OFFS +: 32] <= osm_axi_wdata;
-                AXIS_OUT_LO_TDATA[AXI_MODE_OFFS +:  1] <= osm_axi_mode;
+                AXIS_OUT_LO_TDATA[AXI_MODE_OFFS +:  8] <= osm_axi_mode;
                 AXIS_OUT_LO_TLAST                      <= 1;
                 AXIS_OUT_LO_TVALID                     <= 1;
                 osm0_state                             <= OSM_AXI_WAIT_HS;
