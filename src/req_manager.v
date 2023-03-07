@@ -57,8 +57,9 @@ localparam TLAST_DEFAULT = 0;
 // This is how many beats of the RX data stream are in a single outgoing packet
 localparam RX_BEATS_PER_PACKET = 16;
 
-localparam PKT_TYPE_OFFS = 0;
-localparam ROW_ID_OFFS   = 8;
+localparam PKT_TYPE_OFFS =  0;
+localparam ROW_RQID_OFFS =  8;
+localparam ROW_STAT_OFFS = 40;
 
 //===================================================================================================
 // Define a virtual AXI stream interface that maps to either RX0 or RX1
@@ -178,7 +179,7 @@ always @(posedge clk) begin
 
             // Emit a packet-header which consists of the request ID
             AXIS_TX_TDATA[PKT_TYPE_OFFS +: 8] <= 0;         // This is the message type
-            AXIS_TX_TDATA[ROW_ID_OFFS   +:32] <= rq_data;   // This is the request ID
+            AXIS_TX_TDATA[ROW_RQID_OFFS +:32] <= rq_data;   // This is the request ID
 
             // We have valid data on the TX data bus
             AXIS_TX_TVALID <= 1;
@@ -218,7 +219,10 @@ always @(posedge clk) begin
             if (beat_countdown == 0) begin
                 AXIS_RX_TREADY  <= 0;                      // Don't accept further any RX data for the moment
                 AXIS_RBF_TVALID <= 0;                      // We're not writing data to the row-buffer FIFO
-                AXIS_TX_TDATA   <= req_id;                 // This is the footer data-cycle that we write
+                AXIS_TX_TDATA                     <= 0;       // Default all TX_DATA bits to zeros
+                AXIS_TX_TDATA[PKT_TYPE_OFFS +: 8] <= 0;       // Store the packet-type
+                AXIS_TX_TDATA[ROW_RQID_OFFS +:32] <= req_id;  // Store the request ID
+                AXIS_TX_TDATA[ROW_STAT_OFFS +: 8] <= 0;       // And store the row-status
                 AXIS_TX_TLAST   <= 1;                      // The row-footer marks the end of the packet
                 input_sel       <= ~input_sel;             // Switch the RX stream to the "other" RX stream
                 fsm_state       <= FSM_WAIT_FOR_FINISH;    // And go wait for the footer-cycle to be accepted
@@ -279,7 +283,7 @@ always @(posedge clk) begin
 
                 // Emit a packet-header which consists of the data-request ID
                 AXIS_TX_TDATA[PKT_TYPE_OFFS +: 8] <= 0;         // This is the message type
-                AXIS_TX_TDATA[ROW_ID_OFFS   +:32] <= rq_data;   // This is the request ID
+                AXIS_TX_TDATA[ROW_RQID_OFFS +:32] <= rq_data;   // This is the request ID
 
                 // The TX_TDATA bus is valid (it contains the request-ID)
                 AXIS_TX_TVALID <= 1;
