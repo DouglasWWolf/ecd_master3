@@ -7976,7 +7976,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.rs_fec_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.rs_fec_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -8184,7 +8184,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.rs_fec_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.rs_fec_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -10394,11 +10394,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Feb 19 10:31:42 UTC 2023</spirit:value>
+            <spirit:value>Mon Apr 03 08:56:10 UTC 2023</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:e6da701c</spirit:value>
+            <spirit:value>9:bc8ad044</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -13862,7 +13862,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_tx_rsfec_enable" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_TX_OTN_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 2) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_tx_rsfec_enable" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_TX_OTN_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 2) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -13884,7 +13884,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_rx_rsfec_enable" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_rx_rsfec_enable" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -13906,7 +13906,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_rsfec_ieee_error_indication_mode" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_rsfec_ieee_error_indication_mode" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -13928,7 +13928,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_rx_rsfec_enable_correction" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_rx_rsfec_enable_correction" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -13950,7 +13950,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_rx_rsfec_enable_indication" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.ctl_rx_rsfec_enable_indication" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ENABLE_AXI_INTERFACE&apos;))= 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14187,7 +14187,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_am_lock0" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_am_lock0" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14206,7 +14206,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_am_lock1" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_am_lock1" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14225,7 +14225,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_am_lock2" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_am_lock2" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14244,7 +14244,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_am_lock3" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_am_lock3" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14263,7 +14263,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_corrected_cw_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_corrected_cw_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14282,7 +14282,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_cw_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_cw_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14305,7 +14305,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_err_count0_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_err_count0_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14328,7 +14328,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_err_count1_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_err_count1_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14351,7 +14351,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_err_count2_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_err_count2_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14374,7 +14374,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_err_count3_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_err_count3_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14393,7 +14393,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_hi_ser" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_hi_ser" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14412,7 +14412,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_alignment_status" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_alignment_status" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14435,7 +14435,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_fill_0" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_fill_0" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14458,7 +14458,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_fill_1" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_fill_1" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14481,7 +14481,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_fill_2" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_fill_2" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14504,7 +14504,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_fill_3" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_fill_3" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14527,7 +14527,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_mapping" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_lane_mapping" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 0) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -14546,7 +14546,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_uncorrected_cw_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.stat_rx_rsfec_uncorrected_cw_inc" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_RS_FEC_TRANSCODE_BYPASS&apos;))= 1) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INCLUDE_RS_FEC&apos;))= 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_OPERATING_MODE&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_CMAC_CAUI4_MODE&apos;)) != 3)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30320,7 +30320,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_INCLUDE_RS_FEC</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_INCLUDE_RS_FEC">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_INCLUDE_RS_FEC">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_INCLUDE_AUTO_NEG_LT_LOGIC</spirit:name>
@@ -31046,7 +31046,7 @@
     <spirit:parameter>
       <spirit:name>INCLUDE_RS_FEC</spirit:name>
       <spirit:displayName>Include IEEE 802.3bj RS-FEC</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.INCLUDE_RS_FEC" spirit:choiceRef="choice_pairs_4873554b" spirit:order="240">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.INCLUDE_RS_FEC" spirit:choiceRef="choice_pairs_4873554b" spirit:order="240">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -31803,6 +31803,7 @@
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.CMAC_CORE_SELECT" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.GT_GROUP_SELECT" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.GT_REF_CLK_FREQ" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.INCLUDE_RS_FEC" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.INS_LOSS_NYQ" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.LANE10_GT_LOC" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.LANE1_GT_LOC" xilinx:valueSource="user"/>
